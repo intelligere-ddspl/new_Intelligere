@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Counter</title>
+    <style>body {
+        margin: 0;
+    }
+    
+    .counter-section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+    }
+    
+    .content {
+        height: 150vh; /* Adjust the height based on your content */
+    }
+    </style>
+</head>
+<body>
+    <section class="counter-section">
+        <div class="counter" id="counter">0</div>
+    </section>
+    <div class="content">
+        <!-- Your other content goes here -->
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const counterElement = document.getElementById("counter");
+    let counterValue = 0;
+
+    document.addEventListener("scroll", function () {
+        const scrollPosition = window.scrollY;
+        const sectionOffset = document.querySelector(".counter-section").offsetTop;
+
+        if (scrollPosition >= sectionOffset && counterValue < 100) {
+            counterValue++;
+            counterElement.textContent = counterValue;
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
